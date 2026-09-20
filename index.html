@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Campus Canteen</title>
+  <link rel="stylesheet" href="final.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#home">🍴 <span><b>Campus Canteen</b><small>Token & Queue Management</small></span></a>
+    <nav>
+      <a href="#home">Home</a><a href="#menu">Menu</a><a href="#cart">Cart</a>
+      <a href="#orders">Orders</a><a href="#queue">Live Queue</a><a href="#staff">Staff</a>
+    </nav>
+    <a class="cart-link" href="#cart">Cart <b id="cartCount">0</b></a>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div>
+        <span class="badge">🎓 Made for campus life</span>
+        <h1>Your favourite food,<br><em>minus the queue.</em></h1>
+        <p>Order from your classroom, receive a digital token, and collect your meal when it is ready.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#menu">Browse menu →</a>
+          <a class="btn secondary" href="#queue">See live queue</a>
+        </div>
+      </div>
+
+      <aside class="status-card">
+        <div class="status-head"><span>Today's canteen status</span><b>● Open now</b></div>
+        <div class="food-icon">🍲</div>
+        <h2 id="heroTraffic">Relaxed right now</h2>
+        <p>Place your order before the next rush.</p>
+        <div class="progress"><span id="trafficBar"></span></div>
+        <div class="stats">
+          <div><strong id="homeActiveOrders">0</strong><small>active orders</small></div>
+          <div><strong id="homeWaitTime">5 min</strong><small>average wait</small></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="menu" class="section warm">
+      <div class="heading">
+        <div><span>THE CAMPUS FAVOURITES</span><h2>Pick something delicious</h2><p>Freshly prepared classics for every break.</p></div>
+        <label class="search">⌕ <input id="searchInput" placeholder="Search the menu"></label>
+      </div>
+      <div class="categories" role="tablist">
+        <button class="category active" data-category="All">All items</button>
+        <button class="category" data-category="Snacks">Snacks</button>
+        <button class="category" data-category="Meals">Meals</button>
+        <button class="category" data-category="Beverages">Beverages</button>
+      </div>
+      <div id="menuGrid" class="menu-grid"></div>
+    </section>
+
+    <section id="cart" class="section">
+      <div class="heading"><div><span>YOUR ORDER</span><h2>Almost there</h2><p>Review your picks before sending them to the kitchen.</p></div></div>
+      <div class="cart-layout">
+        <div id="cartItems" class="cart-items"></div>
+
+        <aside class="checkout">
+          <h3>Order summary</h3>
+          <div class="row"><span>Subtotal</span><b id="cartSubtotal">₹0</b></div>
+          <div class="row"><span>Service charge</span><b>₹0</b></div>
+
+          <div class="split">
+            <label><input id="splitBill" type="checkbox"> <span><b>Split the bill</b><small>Share it with your friends</small></span></label>
+            <div id="splitBox" class="hidden">
+              <label for="splitPeople">Number of people</label>
+              <select id="splitPeople"><option value="2">2 people</option><option value="3">3 people</option><option value="4">4 people</option><option value="5">5 people</option></select>
+              <div class="row"><span>Each person pays</span><b id="perPerson">₹0</b></div>
+              <button id="shareBill" class="text-btn">↗ Share bill</button>
+            </div>
+          </div>
+
+          <div class="total"><span>Total</span><b id="cartTotal">₹0</b></div>
+          <label for="pickupTime">Pickup time</label>
+          <select id="pickupTime"><option value="5">As soon as possible</option><option value="10">In 10 minutes</option><option value="15">In 15 minutes</option><option value="20">In 20 minutes</option></select>
+          <button id="placeOrder" class="btn primary wide">Place order →</button>
+          <small class="note">● Your order is sent to the kitchen</small>
+        </aside>
+      </div>
+    </section>
+
+    <section id="orders" class="section">
+      <div class="heading"><div><span>MY ORDERS</span><h2>Follow your food</h2><p>Your digital tokens and current order status.</p></div></div>
+      <div id="ordersContainer"></div>
+    </section>
+
+    <section id="queue" class="section queue">
+      <div class="heading"><div><span>LIVE QUEUE</span><h2>The kitchen, at a glance</h2></div><b class="live">● Live updates</b></div>
+      <div class="queue-grid">
+        <article><span>Currently preparing</span><strong id="currentToken">—</strong><small>Digital token</small></article>
+        <article><span>Pending orders</span><strong id="pendingCount">0</strong><small>Waiting to start</small></article>
+        <article><span>Ready for pickup</span><strong id="readyCount">0</strong><small>At the counter</small></article>
+        <article><span>Traffic level</span><strong id="trafficLevel">Low</strong><small id="averageTime">About 5 minutes</small></article>
+      </div>
+    </section>
+
+    <section id="staff" class="section">
+      <div class="heading"><div><span>STAFF VIEW</span><h2>Kitchen dashboard</h2><p>Update orders as they move through the kitchen.</p></div></div>
+      <div id="staffOrders"></div>
+    </section>
+  </main>
+
+  <footer>🍴 <b>Campus Canteen</b><span>© 2026 College Mini Project</span></footer>
+  <div id="toast" class="toast"></div>
+  <script src="final.js"></script>
+</body>
+</html>
